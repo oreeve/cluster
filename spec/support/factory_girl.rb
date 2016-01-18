@@ -5,6 +5,6 @@ FactoryGirl.define do
     last_name 'Smith'
     password 'password'
     password_confirmation 'password'
-    role 'student'
+    role 'Student'
   end
 end
