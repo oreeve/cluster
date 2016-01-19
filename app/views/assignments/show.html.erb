@@ -1,0 +1,17 @@
+<h1><%= @assignment.title %></h1>
+<% unless @assignment.due_date == nil %>
+<p>Due Date: <%= @assignment.due_date.strftime('%B %-d, %Y') %></p>
+<% end %>
+
+<h3>Instructions:</h3>
+<p><%= @assignment.instructions %></p>
+<% if current_user.teacher? %>
+    <h4>My comments:</h4>
+    <p><%= @assignment.teacher_comments %>
+<% end %></p>
+<p><%=image_tag @assignment.file%></p>
+
+<% if current_user.id == @assignment.user_id %>
+  <%= link_to "Edit This Assignment", edit_assignment_path(@assignment) %><br>
+  <%= link_to "Delete This Assignment", assignment_path(@assignment), data: { confirm: "Are you sure?" }, method: :delete %>
+<% end %>
