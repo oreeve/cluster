@@ -14,7 +14,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'coveralls', require: false
 gem 'kaminari'
 gem 'pg_search'
-
+gem 'excon'
 gem 'carrierwave'
 gem 'fog'
 gem 'fog-aws'

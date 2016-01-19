@@ -410,6 +410,7 @@ DEPENDENCIES
   database_cleaner
   devise
   dotenv-rails
+  excon
   factory_girl
   fog
   fog-aws
