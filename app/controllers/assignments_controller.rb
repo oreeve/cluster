@@ -54,17 +54,19 @@ class AssignmentsController < ApplicationController
 
   def assignment_params
     params.require(:assignment).permit(
-    :title,
-    :instructions,
-    :teacher_comments,
-    :due_date,
-    :user_id,
-    :file
-    )
+                   :title,
+                   :instructions,
+                   :teacher_comments,
+                   :due_date,
+                   :user_id,
+                   :file
+                   )
   end
 
   def authorize_user!
-    redirect_to new_user_session_path unless current_user && current_user.teacher?
+    unless current_user && current_user.teacher?
+      redirect_to new_user_session_path
+    end
   end
 
   def create_or_update_failure
