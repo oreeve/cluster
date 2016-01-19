@@ -1,0 +1,27 @@
+<div class="form">
+  <h1 class="title">Add New Assignment</h1>
+
+  <%= form_for(@assignment) do |f| %>
+    <%= f.label :title %>
+    <br>
+    <%= f.text_field :title, placeholder: "Assignment title", class: "input" %>
+    <br>
+    <%= f.label :due_date, "Due Date (Optional)" %>
+    <br>
+    <%= f.date_field :due_date %>
+    <br>
+    <%= f.label :instructions %>
+    <br>
+    <%= f.text_area :instructions, placeholder: "Assignments Instructions", class: "input", size: "30x10" %>
+    <br>
+    <%= f.label :teacher_comments %>
+    <br>
+    <%= f.text_area :teacher_comments, placeholder: "Teacher Comments", class: "input", size: "30x5" %>
+    <br>
+    <%= f.label :file %>
+    <br>
+    <%= f.file_field :file, placeholder: "Select a File"%>
+    <br><br>
+    <%= f.submit "Edit Assignment", class: "submit" %>
+  <% end %>
+</div>
