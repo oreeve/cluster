@@ -18,6 +18,7 @@ gem 'excon'
 gem 'carrierwave'
 gem 'fog'
 gem 'fog-aws'
+gem 'faraday'
 
 
 
