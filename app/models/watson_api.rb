@@ -1,7 +1,6 @@
 require 'json'
 require 'faraday'
 require 'pry'
-require_relative '~/lib/WatsonApi/config.json'
 
 class WatsonApi
   attr_reader :data
