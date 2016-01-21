@@ -8,7 +8,6 @@ class AssignmentsController < ApplicationController
 
   def show
     @assignment = Assignment.find(params[:id])
-    binding.pry
     @document = WatsonApi.new(@assignment.file.path)
   end
 
