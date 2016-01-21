@@ -2,21 +2,22 @@ class AssignmentsController < ApplicationController
   before_filter :authorize_user!, except: [:index, :show]
 
   def index
-    @teacher = User.find(current_user)
+    @teacher = User.find(current_user.id)
     @assignments = Assignment.all.where(user_id: @teacher.id)
   end
 
   def show
     @assignment = Assignment.find(params[:id])
+    @document = WatsonApi.new(@assignment.file.path)
   end
 
   def new
-    @teacher = User.find(current_user)
+    @teacher = User.find(current_user.id)
     @assignment = Assignment.new
   end
 
   def create
-    @teacher = User.find(current_user)
+    @teacher = User.find(current_user.id)
     @assignment = Assignment.new(assignment_params)
     @assignment.user = @teacher
 

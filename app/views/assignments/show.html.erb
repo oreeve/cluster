@@ -1,4 +1,5 @@
 <h1><%= @assignment.title %></h1>
+
 <% unless @assignment.due_date == nil %>
 <p>Due Date: <%= @assignment.due_date.strftime('%B %-d, %Y') %></p>
 <% end %>
@@ -9,7 +10,13 @@
     <h4>My comments:</h4>
     <p><%= @assignment.teacher_comments %>
 <% end %></p>
-<p><%=image_tag @assignment.file%></p>
+<p><% @document.questions.each do |item| %></p>
+  <li>
+    <h4><%= item[0] %></h4>
+    <p><%= item[1] %></p>
+  </li>
+<% end %><br>
+
 
 <% if current_user.id == @assignment.user_id %>
   <%= link_to "Edit This Assignment", edit_assignment_path(@assignment) %><br>
