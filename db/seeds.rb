@@ -5,3 +5,28 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+teacher = User.create!(
+  first_name: "Olivia",
+  last_name: "Reeve",
+  email: 'oereeve@gmail.com',
+  password: 'testtest',
+  password_confirmation: 'testtest'
+)
+
+student = User.create!(
+  first_name: "Andrew",
+  last_name: "Clark",
+  email: 'aclarkdev@gmail.com',
+  password: 'testtest',
+  password_confirmation: 'testtest'
+)
+
+assign = Assignment.create!(
+  title: "Assignment of Awesome!",
+  instructions: "Please answer the following questions.",
+  teacher_comments: "This is a terrible assignment...",
+  due_date: Time.now,
+  user_id: teacher.id,
+  file: File.new("#{Rails.root}/spec/support/PDFs/sample1.pdf")
+)
