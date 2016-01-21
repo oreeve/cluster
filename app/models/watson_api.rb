@@ -38,6 +38,6 @@ class WatsonApi
     }
 
     response = conn.post(path, payload)
-    JSON.parse(response.body)
+    json_response_body = JSON.parse(response.body)
   end
 end
