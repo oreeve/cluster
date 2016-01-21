@@ -32,11 +32,12 @@ class WatsonApi
     conn.basic_auth(basic_auth_username, basic_auth_password)
 
     payload = {
-      config: Faraday::UploadIO.new("#{::Rails.root}/lib/WatsonApi/config.json", "application/json"),
+      config: Faraday::UploadIO.new(
+        "#{::Rails.root}/lib/WatsonApi/config.json", "application/json"),
       file: Faraday::UploadIO.new(@doc, "application/pdf")
     }
 
     response = conn.post(path, payload)
-    json_response_body = JSON.parse(response.body)
+    JSON.parse(response.body)
   end
 end

@@ -10,10 +10,9 @@ feature "assignment" do
     click_link "Add New Assignment"
 
     fill_in "Title", with: "Noodles!"
-    attach_file "File", "#{Rails.root}/spec/support/images/noodles!.jpg"
+    attach_file "File", "#{Rails.root}/spec/support/PDFs/sample1.pdf"
     click_button "Add Assignment"
 
     expect(page).to have_content("Assignment added successfully")
-    # expect(page).to have_css("img[src*='noodles!.jpg']")
   end
 end
