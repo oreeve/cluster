@@ -14,5 +14,6 @@ feature "assignment" do
     click_button "Add Assignment"
 
     expect(page).to have_content("Assignment added successfully")
+    expect(page).to have_content("Noodles!")
   end
 end
