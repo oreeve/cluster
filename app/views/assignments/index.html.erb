@@ -1,13 +1,25 @@
-<% if current_user.teacher? %>
-  <%= link_to "Add New Assignment", new_assignment_path %>
-<% end %>
-<h1>Assignments:</h1>
-<% @assignments.each do |ass| %>
-  <h3><%= link_to ass.title, assignment_path(ass) %></h3>
-  <% unless ass.due_date == nil %>
-    Due date: <%= ass.due_date.strftime('%B %-d, %Y') %><br>
-  <% end %>
-  <% if current_user.teacher? %>
-    My comments: <%= ass.teacher_comments %>
-  <% end %>
-<% end %>
+<div class="assignments">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+            <% if current_user.teacher? %>
+              <%= link_to "Add New Assignment", new_assignment_path %>
+            <% end %>
+            <h1>Assignments:</h1>
+            
+            <% @assignments.each do |ass| %>
+            <div class="col-md-4 portfolio-item">
+              <h3><%= link_to ass.title, assignment_path(ass) %></h3>
+              <% unless ass.due_date == nil %>
+                Due date: <%= ass.due_date.strftime('%B %-d, %Y') %><br>
+              <% end %>
+              <% if current_user.teacher? %>
+                My comments: <%= ass.teacher_comments %>
+              <% end %>
+            </div>
+            <% end %>
+
+</div>
+</div>
+</div>
+</div>

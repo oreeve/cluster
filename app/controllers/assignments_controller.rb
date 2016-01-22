@@ -8,7 +8,9 @@ class AssignmentsController < ApplicationController
 
   def show
     @assignment = Assignment.find(params[:id])
-    @document = WatsonApi.new(@assignment.file.path)
+    unless @assignment.file == nil
+      @document = WatsonApi.new(@assignment.file.path)
+    end
   end
 
   def new
