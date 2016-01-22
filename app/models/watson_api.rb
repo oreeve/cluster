@@ -1,6 +1,5 @@
 require 'json'
 require 'faraday'
-require 'pry'
 
 class WatsonApi
   attr_reader :data
