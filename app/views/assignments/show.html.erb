@@ -1,3 +1,8 @@
+<div class="new-assignment">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+
 <h1><%= @assignment.title %></h1>
 
 <% unless @assignment.due_date == nil %>
@@ -22,3 +27,7 @@
   <%= link_to "Edit This Assignment", edit_assignment_path(@assignment) %><br>
   <%= link_to "Delete This Assignment", assignment_path(@assignment), data: { confirm: "Are you sure?" }, method: :delete %>
 <% end %>
+</div>
+</div>
+</div>
+</div>

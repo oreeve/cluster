@@ -14,8 +14,7 @@ feature 'user signs in', %{
 
   scenario 'an existing user specifies a valid email and password' do
     user = FactoryGirl.create(:user)
-    visit root_path
-    click_link 'Sign In'
+    visit new_user_session_path
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Sign In'
@@ -25,8 +24,7 @@ feature 'user signs in', %{
   end
 
   scenario 'a non-existant user email and password is supplied' do
-    visit root_path
-    click_link 'Sign In'
+    visit new_user_session_path
     fill_in 'Email', with: 'nobody@example.com'
     fill_in 'Password', with: 'password'
     click_button 'Sign In'
@@ -38,8 +36,7 @@ feature 'user signs in', %{
 
   scenario 'an existing email with the wrong password is denied access' do
     user = FactoryGirl.create(:user)
-    visit root_path
-    click_link 'Sign In'
+    visit new_user_session_path
     fill_in 'Email', with: user.email
     fill_in 'Password', with: 'incorrectPassword'
     click_button 'Sign In'

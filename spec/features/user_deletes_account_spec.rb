@@ -24,11 +24,9 @@ feature 'User deletes their existing account' do
     visit edit_user_registration_path
     click_button 'Cancel my account'
 
-    # Popup that happens here is handled automagically by poltergeist
-
     expect(page).to have_content "Bye! Your account has been successfully
                                   cancelled."
-    click_link 'Sign In'
+    visit new_user_session_path
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
     click_button 'Sign In'

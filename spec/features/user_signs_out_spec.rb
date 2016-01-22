@@ -18,10 +18,9 @@ feature 'user signs out', %{
   end
 
   scenario 'an authenticated user can sign out' do
-    visit root_path
+    visit assignments_path
     click_link 'Sign Out'
 
-    expect(page).to have_content('Signed out successfully')
     expect(page).to have_content('Sign In')
     expect(page).to_not have_content('Sign Out')
   end

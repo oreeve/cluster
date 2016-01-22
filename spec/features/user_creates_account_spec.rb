@@ -14,8 +14,7 @@ require 'rails_helper'
 
 feature 'User signs up for an account' do
   scenario 'User provides valid information' do
-    visit root_path
-    click_link "Sign Up"
+    visit new_user_registration_path
 
     choose('I am a teacher')
     fill_in 'First name', with: 'Foo'
