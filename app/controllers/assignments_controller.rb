@@ -2,8 +2,14 @@ class AssignmentsController < ApplicationController
   before_filter :authorize_user!, except: [:index, :show]
 
   def index
-    @teacher = User.find(current_user.id)
-    @assignments = Assignment.all.where(user_id: @teacher.id)
+    if current_user.teacher?
+      @teacher = User.find(current_user.id)
+      @assignments = Assignment.all.where(user_id: @teacher.id)
+    else
+      @student = User.find(current_user.id)
+      @class = Class.find(current_user.id)
+      @assignments = Assignment.all.where(user_id: @class.teacher_id)
+    end
   end
 
   def show
