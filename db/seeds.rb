@@ -15,10 +15,28 @@ teacher = User.create!(
   password_confirmation: 'testtest'
 )
 
+teacher2 = User.create!(
+  first_name: "Ophelia",
+  last_name: "McAllister",
+  email: 'teacher@test.com',
+  role: 'Teacher',
+  password: 'testtest',
+  password_confirmation: 'testtest'
+)
+
 student = User.create!(
   first_name: "Andrew",
   last_name: "Clark",
   email: 'aclarkdev@gmail.com',
+  role: 'Student',
+  password: 'testtest',
+  password_confirmation: 'testtest'
+)
+
+student2 = User.create!(
+  first_name: "John",
+  last_name: "Smith",
+  email: 'test@test.com',
   role: 'Student',
   password: 'testtest',
   password_confirmation: 'testtest'
@@ -31,4 +49,9 @@ assign = Assignment.create!(
   due_date: Time.now,
   user_id: teacher.id,
   file: File.new("#{Rails.root}/spec/support/PDFs/sample1.pdf")
+)
+
+class1 = Class.create!(
+  student_id: student.id,
+  teacher_id: teacher.id
 )
