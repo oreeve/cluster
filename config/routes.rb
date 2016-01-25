@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   scope :users do
     resources :assignments
   end
+
+  resources :rosters, except: [:show]
 end

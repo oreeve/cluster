@@ -1,0 +1,10 @@
+<h1>Your Class:</h1>
+
+<ul>
+<% @class.each do |item| %>
+  <li><%= link_to "#{item.student.first_name} #{item.student.last_name}", '#' %></li>
+<% end %>
+</ul>
+
+<br>
+<%= link_to "Add Students", new_roster_path %>

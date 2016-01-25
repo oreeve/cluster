@@ -1,0 +1,20 @@
+<div class="new-assignment">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+
+<div class="form">
+  <h1 class="title">Add New Students</h1>
+
+  <%= form_for(@roster) do |f| %>
+    <%= f.label :student %>
+    <br>
+    <%= f.email_field :student, placeholder: "Student Email", class: "input" %>
+    <br><br>
+    <%= f.submit "Add Student", class: "submit" %>
+  <% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
