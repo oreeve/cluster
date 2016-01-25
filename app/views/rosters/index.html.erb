@@ -1,0 +1,18 @@
+<div class="new-assignment">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+              <h1>My Class:</h1>
+
+
+              <% @class.each do |item| %>
+              <%= link_to "#{item.student.first_name} #{item.student.last_name}", '#' %><br>
+              <% end %>
+
+
+              <br>
+              <%= link_to "Add Students", new_roster_path %>
+            </div>
+        </div>
+    </div>
+</div>
