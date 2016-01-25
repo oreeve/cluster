@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 20160125154851) do
     t.string   "file"
   end
 
-  create_table "classes", force: :cascade do |t|
-    t.integer "teacher_id"
-    t.integer "student_id"
+  create_table "rosters", force: :cascade do |t|
+    t.integer "teacher_id", null: false
+    t.integer "student_id", null: false
   end
 
   create_table "users", force: :cascade do |t|

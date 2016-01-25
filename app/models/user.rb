@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :assignments
-  belongs_to :teaches_class, class_name: "Class", foreign_key: "teacher_id"
-  belongs_to :in_class, class_name: "Class", foreign_key: "student_id"
+  has_many :classes, class_name: "Roster", foreign_key: "teacher_id"
+  belongs_to :class, class_name: "Roster", foreign_key: "student_id"
 
   validates :role, presence: true, inclusion: { in: ["Teacher", "Student"] }
   validates :first_name, presence: true

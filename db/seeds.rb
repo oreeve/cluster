@@ -51,7 +51,7 @@ assign = Assignment.create!(
   file: File.new("#{Rails.root}/spec/support/PDFs/sample1.pdf")
 )
 
-class1 = Class.create!(
+roster = Roster.create!(
   student_id: student.id,
   teacher_id: teacher.id
 )
