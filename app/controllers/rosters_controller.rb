@@ -14,12 +14,18 @@ class RostersController < ApplicationController
     @teacher = User.find(current_user.id)
     @roster = Roster.new(roster_params)
     @roster.teacher = @teacher
+    @roster.student = User.find_by(email: "#{params[:roster][:student]}")
 
-    if @roster.save
-      flash[:success] = "Class created!"
-      redirect_to @roster
+    unless @roster.student.teacher?
+      if @roster.save
+        flash[:success] = "Student added!"
+        redirect_to rosters_path
+      else
+        create_or_update_failure
+      end
     else
-      create_or_update_failure
+      flash[:warning] = "Cannot add a teacher to a class!"
+      redirect_to rosters_path
     end
   end
 
@@ -30,7 +36,7 @@ class RostersController < ApplicationController
   private
 
   def roster_params
-    params.require(:roster).permit(:teacher_id, student_id)
+    params.require(:roster).permit(:teacher_id, :student_id)
   end
 
   def authorize_user!
