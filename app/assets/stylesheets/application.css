@@ -213,3 +213,7 @@
 .navbar-brand-topnav {
   font-size: 25px;
 }
+
+#remove-student {
+  color: red;
+}

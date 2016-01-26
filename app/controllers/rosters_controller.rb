@@ -29,9 +29,23 @@ class RostersController < ApplicationController
     end
   end
 
-  # def edit
-  #   @roster = Roster.
-  # end
+  def update
+    @roster = Roster.find(params[:id])
+    @roster.teacher = current_user
+
+    if @roster.save
+      flash[:success] = "Student added!"
+      redirect_to rosters_path
+    else
+      create_or_update_failure
+    end
+  end
+
+  def destroy
+    @roster = Roster.find(params[:id])
+    @roster.destroy
+    redirect_to rosters_path
+  end
 
   private
 
