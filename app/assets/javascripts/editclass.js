@@ -1,6 +1,6 @@
 var main  = function() {
-  $('.remove-student').hide();
-  $('#toggleButton').click(function() {
+  $(".remove-student").hide();
+  $("#toggleButton").click(function() {
     $(".remove-student").toggle();
 
     if ($(this).val() == "Edit Class") {
@@ -9,7 +9,7 @@ var main  = function() {
     $(this).val("Edit Class");
     }
   });
-}
+};
 
 
 $(document).ready(main);
