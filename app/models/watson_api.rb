@@ -1,5 +1,6 @@
 require 'json'
 require 'faraday'
+require 'open-uri'
 
 class WatsonApi
   attr_reader :data
@@ -10,7 +11,7 @@ class WatsonApi
     else
       @doc = doc.path
     end
-    
+
     @data = get_doc
   end
 
@@ -35,12 +36,20 @@ class WatsonApi
 
     conn.basic_auth(basic_auth_username, basic_auth_password)
 
-    payload = {
-      config: Faraday::UploadIO.new(
-        "#{::Rails.root}/lib/WatsonApi/config.json", "application/json"),
-      file: Faraday::UploadIO.new(@doc, "application/pdf")
-    }
-
+    payload = {}
+    if Rails.env.production?
+      payload = {
+        config: Faraday::UploadIO.new(
+          "#{::Rails.root}/lib/WatsonApi/config.json", "application/json"),
+        file: Faraday::UploadIO.new(open(@doc), "application/pdf")
+      }
+    else
+      payload = {
+        config: Faraday::UploadIO.new(
+          "#{::Rails.root}/lib/WatsonApi/config.json", "application/json"),
+        file: Faraday::UploadIO.new(@doc, "application/pdf")
+      }
+    end
     response = conn.post(path, payload)
     json_response_body = JSON.parse(response.body)
   end
