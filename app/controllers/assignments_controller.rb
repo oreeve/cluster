@@ -15,7 +15,7 @@ class AssignmentsController < ApplicationController
   def show
     @assignment = Assignment.find(params[:id])
     unless @assignment.file == nil
-      @document = WatsonApi.new(@assignment.file.path)
+      @document = WatsonApi.new(@assignment.file)
     end
   end
 
