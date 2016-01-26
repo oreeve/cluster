@@ -5,7 +5,12 @@ class WatsonApi
   attr_reader :data
 
   def initialize(doc)
-    @doc = doc
+    if Rails.env.production?
+      @doc = doc.url
+    else
+      @doc = doc.path
+    end
+    
     @data = get_doc
   end
 
