@@ -28,7 +28,6 @@ class AssignmentsController < ApplicationController
     @teacher = User.find(current_user.id)
     @assignment = Assignment.new(assignment_params)
     @assignment.user = @teacher
-
     if @assignment.save
       flash[:success] = "Assignment added successfully!"
       redirect_to assignment_path(@assignment)

@@ -9,7 +9,7 @@
 teacher = User.create!(
   first_name: "Olivia",
   last_name: "Reeve",
-  email: 'oereeve@gmail.com',
+  email: 'olivia@test.com',
   role: 'Teacher',
   password: 'testtest',
   password_confirmation: 'testtest'
@@ -25,9 +25,9 @@ teacher2 = User.create!(
 )
 
 student = User.create!(
-  first_name: "Andrew",
-  last_name: "Clark",
-  email: 'aclarkdev@gmail.com',
+  first_name: "Susie",
+  last_name: "Johnson",
+  email: 'student@test.com',
   role: 'Student',
   password: 'testtest',
   password_confirmation: 'testtest'

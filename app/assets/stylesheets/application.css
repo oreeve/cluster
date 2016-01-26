@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
  body {
      padding-top: 50px;
  }
@@ -33,6 +34,7 @@
      font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
      font-weight: 700;
  }
+
 
  .topnav {
      font-size: 14px;
@@ -212,4 +214,12 @@
 
 .navbar-brand-topnav {
   font-size: 25px;
+}
+
+.remove-student {
+  color: red;
+}
+
+*:focus {
+  outline: 0 none !important;
 }
