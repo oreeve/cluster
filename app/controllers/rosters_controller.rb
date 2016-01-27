@@ -44,6 +44,7 @@ class RostersController < ApplicationController
   def destroy
     @roster = Roster.find(params[:id])
     @roster.destroy
+
     redirect_to rosters_path
   end
 
