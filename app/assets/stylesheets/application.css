@@ -131,8 +131,6 @@
  .banner {
      padding: 100px 0;
      color: #f8f8f8;
-     /*background: url(http://i.imgur.com/4S5KGbb.jpg) no-repeat center center;
-     background-size: cover;*/
  }
 
  .banner h2 {
@@ -237,13 +235,14 @@
 
 .login .container {
   text-align: center;
-  margin-top: 1%;
+  margin-top: 6%;
 }
 
 .login .container .login-box {
   background-color: rgba(23, 23, 23, 0.55);
-  padding: 10px;
-  padding-bottom: 20px;
+  padding: 20px;
+  padding-bottom: 40px;
+  border-radius: 15px;
 }
 
 .login h2 {

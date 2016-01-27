@@ -17,11 +17,11 @@ feature 'User signs up for an account' do
     visit new_user_registration_path
 
     choose('I am a teacher')
-    fill_in 'First name', with: 'Foo'
-    fill_in 'Last name', with: 'Bar'
-    fill_in 'Email', with: 'foo@bar.com'
-    fill_in 'Password', with: 'password'
-    fill_in 'Password confirmation', with: 'password'
+    fill_in 'user_first_name', with: 'Foo'
+    fill_in 'user_last_name', with: 'Bar'
+    fill_in 'user_email', with: 'foo@bar.com'
+    fill_in 'user_password', with: 'password'
+    fill_in 'user_password_confirmation', with: 'password'
     click_button 'Sign Up'
 
     expect(page).to have_content("Welcome! You have signed up successfully")
@@ -42,11 +42,11 @@ feature 'User signs up for an account' do
     visit new_user_registration_path
 
     choose('I am a teacher')
-    fill_in 'First name', with: 'Foo'
-    fill_in 'Last name', with: 'Bar'
-    fill_in 'Email', with: 'foo@bar.com'
-    fill_in 'Password', with: 'password'
-    fill_in 'Password confirmation', with: 'secret'
+    fill_in 'user_first_name', with: 'Foo'
+    fill_in 'user_last_name', with: 'Bar'
+    fill_in 'user_email', with: 'foo@bar.com'
+    fill_in 'user_password', with: 'password'
+    fill_in 'user_password_confirmation', with: 'secret'
     click_button 'Sign Up'
 
     expect(page).to have_content("Password confirmation doesn't match")
