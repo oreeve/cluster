@@ -1,0 +1,39 @@
+var main  = function() {
+  $(".remove-student").hide();
+  $(".remove-assignment").hide();
+
+  $("#toggleAssignment").click(function() {
+    $(".remove-assignment").toggle();
+
+    if ($(this).val() == "Edit Assignments") {
+      $(this).val("Done");
+    } else {
+    $(this).val("Edit Assignments");
+    }
+  });
+
+  $("#toggleStudent").click(function() {
+    $(".remove-student").toggle();
+
+    if ($(this).val() == "Edit Class") {
+      $(this).val("Done");
+    } else {
+    $(this).val("Edit Class");
+    }
+  });
+
+};
+
+$(document).ready(main);
+
+// $(".remove-student").click(function(e) {
+//   e.preventDefault();
+//   var request = $.ajax({
+//     method: "DELETE",
+//     url: "/rosters/" + id;
+//   });
+//
+//   request.done(function() {
+//     alert("Student removed from class!");
+//   });
+// });

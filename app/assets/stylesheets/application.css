@@ -219,6 +219,9 @@
 .remove-student {
   color: red;
 }
+.remove-assignment {
+  color: red;
+}
 
 *:focus {
   outline: 0 none !important;
