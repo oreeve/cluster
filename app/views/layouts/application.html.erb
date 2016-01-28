@@ -35,7 +35,19 @@
                   <li><%= link_to 'Assignments', assignments_path %></li>
                     <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
                 <% end %>
-                  <li><a href="/#contact">Contact</a></li>
+                  <li><a href="#contact">Contact</a>
+                    <ul>
+                      <li>
+                          <a href="mailto:oereeve@gmail.com"><span class="network-name">E-Mail</span></a>
+                      </li>
+                      <li>
+                          <a href="https://github.com/oreeve/cluster"><span class="network-name">Github</span></a>
+                      </li>
+                      <li>
+                          <a href="https://www.linkedin.com/in/oreeve"><span class="network-name">Linkedin</span></a>
+                      </li>
+                    </ul>
+                  </li>
               </ul>
           </div>
       </div>
@@ -50,31 +62,9 @@
 <%= yield %>
 
 
-<footer>
+<!-- <footer>
   <p>Cluster: <i>Astronomy.</i> a group of neighboring stars, held together by mutual gravitation,<br>
     that have essentially the same age and composition and thus supposedly a common origin.</p><br>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <ul class="list-inline">
-                    <li><%= link_to "Cluster", root_path %></li>
-                    <li class="footer-menu-divider">&sdot;</li>
-                  <% if !user_signed_in? %>
-                    <li><%= link_to 'Sign In', new_user_session_path %></li>
-                    <li class="footer-menu-divider">&sdot;</li>
-                    <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-                  <% else %>
-                    <li><%= link_to current_user.first_name, '#' %></li>
-                    <li class="footer-menu-divider">&sdot;</li>
-                    <li><%= link_to 'Assignments', assignments_path %></li>
-                    <% end %>
-                    <li class="footer-menu-divider">&sdot;</li>
-                  <li><a href="#contact">Contact</a></li>
-                </ul>
-                <p class="copyright text-muted small">Copyright &copy; Olivia Reeve 2016. All Rights Reserved</p>
-            </div>
-        </div>
-    </div>
 </footer>
 
 </body>

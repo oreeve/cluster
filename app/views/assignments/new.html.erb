@@ -1,32 +1,43 @@
-<div class="new-assignment">
+<div class="login">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-4 col-md-offset-4">
+              <div class="login-box">
 
-<div class="form">
-  <h1 class="title">Add New Assignment</h1>
+  <h2>Add New Assignment</h2>
 
   <%= form_for(@assignment) do |f| %>
-    <%= f.label :title %>
+    <div class="field">
+    <br />
+    <%= f.text_field :title, autofocus: true, placeholder: "Assignment title", class: "form-control" %>
     <br>
-    <%= f.text_field :title, placeholder: "Assignment title", class: "input" %>
+    </div>
+    <div class="field">
     <br>
-    <%= f.label :due_date, "Due Date (Optional)" %>
+    <%= f.date_field :due_date, class: "form-control", placeholder: "Due Date"%>
     <br>
-    <%= f.date_field :due_date %>
+    </div>
+    <div class="field">
     <br>
-    <%= f.label :instructions %>
+    <%= f.label :instructions, "Assignment Instructions" %>
+    <%= f.text_area :instructions, placeholder: "Assignment Instructions", class: "form-control text-area", size: "30x10" %>
     <br>
-    <%= f.text_area :instructions, placeholder: "Assignments Instructions", class: "input", size: "30x10" %>
+    </div>
+    <div class="field">
     <br>
-    <%= f.label :teacher_comments %>
+    <%= f.label :teacher_comments, "Teacher Comments" %>
+    <%= f.text_area :teacher_comments, placeholder: "Teacher Comments", class: "form-control text-area", size: "30x5" %>
     <br>
-    <%= f.text_area :teacher_comments, placeholder: "Teacher Comments", class: "input", size: "30x5" %>
-    <br><br>
+    </div>
+    <br>
+    <div class="file">
     <%= f.label :file, "File (PDF Only)" %>
     <%= f.file_field :file, class: "filebutton"%>
+    </div>
     <br><br>
-    <%= f.submit "Add Assignment", class: "submit" %>
+    <div class="actions">
+    <%= f.submit "Add Assignment", class: "float" %>
+    </div>
   <% end %>
 </div>
 </div>

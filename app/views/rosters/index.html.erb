@@ -1,4 +1,4 @@
-<div class="new-assignment">
+<div class="assignments">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -7,7 +7,7 @@
               <input type="button" value="Edit Class" id="toggleStudent" class="btn btn-default btn-md"><br><br>
               <ul style="list-style: none;">
               <% @class.each do |item| %>
-              <li>
+              <li class="assignment col-md-5">
                 <%= link_to "#{item.student.first_name} #{item.student.last_name}", '#' %>   <%= link_to "X", roster_path(item.id), data: { confirm: "Are you sure you want to remove this student?" }, method: :delete, class: "remove-student"%><br>
               </li>
               <% end %>
