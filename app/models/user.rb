@@ -19,5 +19,4 @@ class User < ActiveRecord::Base
   def teacher?
     role == "Teacher"
   end
-
 end

@@ -218,7 +218,9 @@
 }
 
 .show-assignment a {
-  font-size: 15px;
+  font-size: 25px;
+  color: #00CED1;
+  text-shadow: 1px 1px 3px #23203b;
 }
 
 .show-assignment p {
@@ -228,7 +230,7 @@
 .assignment a {
   color: #00CED1;
   text-shadow: 1px 1px 3px #23203b;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 a.remove-assignment, a.remove-student {

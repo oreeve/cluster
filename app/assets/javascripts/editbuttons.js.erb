@@ -1,6 +1,8 @@
 var main  = function() {
   $(".remove-student").hide();
   $(".remove-assignment").hide();
+  $(".edit-submission").hide();
+  $(".assignmentSubs").hide();
 
   $("#toggleAssignment").click(function() {
     $(".remove-assignment").toggle();
@@ -22,6 +24,10 @@ var main  = function() {
     }
   });
 
+  $("#toggleSubmission").click(function() {
+    $(".edit-submission").toggle();
+    $(".assignmentSubs").toggle();
+  });
 };
 
 $(document).ready(main);

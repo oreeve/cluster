@@ -1,6 +1,8 @@
 class Assignment < ActiveRecord::Base
   mount_uploader :file, AssignmentUploader
   belongs_to :user
+  has_many :submissions
+  has_many :students, through: :submissions
 
   validates :title, presence: true
   validates :instructions, presence: true
