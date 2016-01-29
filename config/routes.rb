@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root "landings#index"
 
   scope :users do
-    resources :assignments
+    resources :assignments do
+      resources :submissions
+    end
   end
 
   resources :rosters, except: [:show]

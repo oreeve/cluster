@@ -9,7 +9,7 @@ feature "assignment" do
     visit assignments_path
     click_link "Add New Assignment"
 
-    fill_in "Title", with: "Noodles!"
+    fill_in "assignment_title", with: "Noodles!"
     fill_in "Instructions", with: "Eat em"
     attach_file "File", "#{Rails.root}/spec/support/PDFs/sample1.pdf"
     click_button "Add Assignment"

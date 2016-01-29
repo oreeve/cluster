@@ -14,9 +14,14 @@ class AssignmentsController < ApplicationController
 
   def show
     @assignment = Assignment.find(params[:id])
-    unless @assignment.file == nil
-      @document = WatsonApi.new(@assignment.file)
-    end
+    @document = WatsonApi.new(@assignment.file)
+
+    # if @assignment.submissions.where(student_id: current_user.id).exists?
+    #   @submission = Submission.where(student_id: current_user.id).first
+    # else
+    # end
+    @submission = Submission.new
+
   end
 
   def new

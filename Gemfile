@@ -19,6 +19,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'fog-aws'
 gem 'faraday'
+gem 'tinymce-rails'
 
 
 
@@ -42,7 +43,6 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'poltergeist'
-  gem 'coveralls', require: false
 end
 
 group :production do

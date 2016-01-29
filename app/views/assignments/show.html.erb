@@ -1,33 +1,36 @@
+<script type="text/javascript" src="/assets/tinymce.js"></script>
 <div class="new-assignment">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+              <div class="show-assignment">
 
-<h1><%= @assignment.title %></h1>
+                <% if current_user.id == @assignment.user_id %>
+                <%= link_to "Edit This Assignment", edit_assignment_path(@assignment), class: "btn btn-default btn-lg" %>
+                <%= link_to "Delete This Assignment", assignment_path(@assignment), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-default btn-lg" %>
+                <% end %>
 
-<% unless @assignment.due_date == nil %>
-<p>Due Date: <%= @assignment.due_date.strftime('%B %-d, %Y') %></p>
-<% end %>
+                <h1><%= @assignment.title %></h1>
 
-<h3>Instructions:</h3>
-<p><%= @assignment.instructions %></p>
-<% if current_user.id == @assignment.user_id %>
-    <h4>My comments:</h4>
-    <p><%= @assignment.teacher_comments %>
-<% end %></p>
-<p><% @document.questions.each do |item| %></p>
-  <li>
-    <h4><%= item[0] %></h4>
-    <p><%= item[1] %></p>
-  </li>
-<% end %><br>
+                <% unless @assignment.due_date == nil %>
+                <p>Due Date: <%= @assignment.due_date.strftime('%B %-d, %Y') %></p>
+                <% end %>
 
-
-<% if current_user.id == @assignment.user_id %>
-  <%= link_to "Edit This Assignment", edit_assignment_path(@assignment) %><br>
-  <%= link_to "Delete This Assignment", assignment_path(@assignment), data: { confirm: "Are you sure?" }, method: :delete %>
-<% end %>
-</div>
-</div>
-</div>
+                <h3>Instructions:</h3>
+                <p><%= @assignment.instructions %></p>
+                <% if current_user.id == @assignment.user_id %>
+                    <h4>My comments:</h4>
+                    <p><%= @assignment.teacher_comments %>
+                <% end %></p>
+                <p><% @document.questions.each do |item| %></p>
+                  <li>
+                    <h4><%= item[0] %></h4>
+                    <p><%= item[1] %></p>
+                  </li>
+                <% end %><br>
+<!-- submissions stuff -->
+              </div>
+          </div>
+      </div>
+  </div>
 </div>
