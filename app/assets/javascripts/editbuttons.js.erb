@@ -2,7 +2,7 @@ var main  = function() {
   $(".remove-student").hide();
   $(".remove-assignment").hide();
   $(".edit-submission").hide();
-  $(".assignmentSubs").hide();
+  $(".submission-form").hide();
 
   $("#toggleAssignment").click(function() {
     $(".remove-assignment").toggle();
@@ -27,19 +27,13 @@ var main  = function() {
   $("#toggleSubmission").click(function() {
     $(".edit-submission").toggle();
     $(".assignmentSubs").toggle();
+    $(".submission-form").toggle();
   });
+
+  $(".toggleStudentSub").click(function() {
+    $(this).parent("li").children(".submission-form").toggle();
+  });
+
 };
 
 $(document).ready(main);
-
-// $(".remove-student").click(function(e) {
-//   e.preventDefault();
-//   var request = $.ajax({
-//     method: "DELETE",
-//     url: "/rosters/" + id;
-//   });
-//
-//   request.done(function() {
-//     alert("Student removed from class!");
-//   });
-// });

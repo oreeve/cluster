@@ -6,6 +6,7 @@ class CreateSubmissions < ActiveRecord::Migration
       t.belongs_to :assignment, null: false
       t.integer :grade
       t.string :comments
+      t.timestamps
     end
   end
 end

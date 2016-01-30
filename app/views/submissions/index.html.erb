@@ -1,0 +1,50 @@
+<div class="assignments">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2>Submissions for:<br><%= link_to @assignment.title, assignment_path(@assignment) %></h2>
+        <% if @submissions == nil %>
+        <p>There are no submissions for this assignment!</p>
+        <% end %>
+        <div class="assignment-list">
+            <% @submissions.each do |submission| %>
+              <div class="col-md-5 show-assignment">
+                <li class="<%= submission.student.id %>" style type="none">
+                <input type="button" value="Grade This Submission" class="btn btn-default btn-md toggleStudentSub">
+                <h3><%= link_to "#{submission.student.first_name} #{submission.student.last_name}", '#' %></h3>
+                <% unless submission.assignment.due_date == nil %>
+                  Due date: <%= submission.assignment.due_date.strftime('%B %-d, %Y') %><br>
+                  <% if submission.past_due? %>
+                    <p>Submitted Late<p>
+                  <% else %>
+                    <p>Submitted Ontime<p>
+                  <% end %>
+                <% end %>
+                <% unless submission.grade == nil %>
+                  Grade: <%= submission.grade %><br>
+                <% end %>
+                <% unless submission.comments == nil %>
+                  Comments: <%= submission.comments %><br>
+                <% end %>
+                <%= submission.body.html_safe %>
+                <div class="submission-form">
+                  <%= form_for([@assignment, submission]) do |f| %>
+                    <%= f.label :grade %><br>
+                    <%= f.number_field :grade, min: 0, max: 100 %><br>
+                    <%= f.label :comments %><br>
+                    <%= f.text_area :comments %>
+                    <br>
+                    <div class="actions">
+                      <%= f.hidden_field :student_id, value: submission.student.id %>
+                      <%= f.submit "Grade Submission", class: "btn btn-default btn-md", controller: 'submissions', method: :update %>
+                    </div>
+                  <% end %>
+                </div>
+              </li>
+              </div>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
