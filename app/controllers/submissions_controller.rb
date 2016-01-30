@@ -1,12 +1,8 @@
 class SubmissionsController < ApplicationController
   before_filter :authorize_user!, only: [:index]
   def index
-    if current_user.teacher?
-      @assignment = Assignment.find(params[:assignment_id])
-      @submissions = @assignment.submissions
-    else
-      @submission = Submission.where(student_id: current_user.id).first
-    end
+    @assignment = Assignment.find(params[:assignment_id])
+    @submissions = @assignment.submissions
   end
 
   def new
