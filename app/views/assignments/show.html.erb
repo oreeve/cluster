@@ -8,6 +8,7 @@
                 <% if current_user.id == @assignment.user_id %>
                 <%= link_to "Edit This Assignment", edit_assignment_path(@assignment), class: "btn btn-default btn-lg" %>
                 <%= link_to "Delete This Assignment", assignment_path(@assignment), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-default btn-lg" %>
+                <%= link_to "See Submissions", assignment_submissions_path(@assignment), class: "btn btn-default btn-lg" %>
                 <% end %>
 
                 <h1><%= @assignment.title %></h1>
@@ -27,9 +28,16 @@
                     <h4><%= item[0] %></h4>
                     <p><%= item[1] %></p>
                   </li>
-                <% end %><br>
-<!-- submissions stuff -->
+                <% end %>
+                <% if !current_user.teacher? && !@submitted %>
+                <h2>Submission</h2>
+                <input type="button" value="Add Submission" id="toggleSubmission" class="btn btn-default btn-md">
+
+              <div class="submission-form">
+                <%= render partial: "assignments/form" %>
               </div>
+              <% end %>
+            </div>
           </div>
       </div>
   </div>

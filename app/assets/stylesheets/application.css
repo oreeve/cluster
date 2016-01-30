@@ -175,6 +175,12 @@
   padding-top: 5px;
 }
 
+.submissions a {
+  font-size: 25px;
+  color: #00CED1;
+  text-shadow: 1px 1px 3px #23203b;
+}
+
 .new-assignment {
    padding-top: 50px;
    padding-bottom: 50px;
@@ -220,7 +226,7 @@
 .show-assignment a {
   font-size: 25px;
   color: #00CED1;
-  text-shadow: 1px 1px 3px #23203b;
+  text-shadow: 1px 1px 1px #23203b;
 }
 
 .show-assignment p {

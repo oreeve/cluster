@@ -31,11 +31,13 @@ ActiveRecord::Schema.define(version: 20160128222252) do
   end
 
   create_table "submissions", force: :cascade do |t|
-    t.text    "body",          null: false
-    t.integer "student_id",    null: false
-    t.integer "assignment_id", null: false
-    t.integer "grade"
-    t.string  "comments"
+    t.text     "body",          null: false
+    t.integer  "student_id",    null: false
+    t.integer  "assignment_id", null: false
+    t.integer  "grade"
+    t.string   "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|

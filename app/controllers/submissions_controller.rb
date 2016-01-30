@@ -1,14 +1,8 @@
 class SubmissionsController < ApplicationController
+  before_filter :authorize_user!, only: [:index]
   def index
-    if current_user.teacher?
-      @assignment = Assignment.find(params[:assignment_id])
-    else
-      @submission = Submission.where(student_id: current_user.id).first
-    end
-  end
-
-  def show
-    @submission = Submission.find(params[:id])
+    @assignment = Assignment.find(params[:assignment_id])
+    @submissions = @assignment.submissions
   end
 
   def new
@@ -24,38 +18,27 @@ class SubmissionsController < ApplicationController
     @submission.assignment = @assignment
 
     if @submission.save
-      flash[:success] = "Submission submitted!"
-      redirect_to assignment_path(@assignment)
+      flash[:success] = "Submission added!"
     else
-      create_or_update_failure
+      flash[:warning] = @submission.errors.full_messages.join(', ')
     end
+    redirect_to assignment_path(@assignment)
   end
 
   def edit
-    @assignment = Assignment.find(params[:id])
-    @submission = Submission.where(student_id: current_user.id, assignment_id: @assignment.id).first
+    @assignment = Assignment.find(params[:assignment_id])
+    @submission = Submission.find(params[:id])
   end
 
   def update
     @assignment = Assignment.find(params[:assignment_id])
+    @submission = Submission.find(params[:id])
 
-    if current_user.teacher?
-      @submission = Submission.where(assignment_id: @assignment.id, student_id: params[:student_id]).first
-      if @submission.update(sub_params)
-        flash[:success] = "Submission graded!"
-        redirect_to assignment_submissions_path(@assignment)
-      else
-        create_or_update_failure
-      end
+    if @submission.update(sub_params)
+      flash[:success] = "Submission graded!"
+      redirect_to assignment_submissions_path(@assignment)
     else
-      @student = User.find(current_user.id)
-      @submission = Submission.where(student_id: @student.id, assignment_id: @assignment.id).first
-      if @submission.update(sub_params)
-        flash[:success] = "Submission updated!"
-        redirect_to assignment_path(@assignment)
-      else
-        create_or_update_failure
-      end
+      create_or_update_failure
     end
   end
 
@@ -75,7 +58,8 @@ class SubmissionsController < ApplicationController
 
   def authorize_user!
     unless current_user && current_user.teacher?
-      redirect_to new_user_session_path
+      redirect_to root_path
+      flash[:notice] = "Only teachers can view submissions!"
     end
   end
 

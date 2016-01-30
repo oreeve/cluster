@@ -5,5 +5,8 @@ class Submission < ActiveRecord::Base
 
   validates_uniqueness_of :student_id, scope: :assignment_id
   validates :body, presence: true
-  # validates :grade, numericality: true
+
+  def past_due?
+    created_at > assignment.due_date
+  end
 end
