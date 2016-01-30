@@ -19,11 +19,10 @@ class SubmissionsController < ApplicationController
 
     if @submission.save
       flash[:success] = "Submission added!"
-      redirect_to assignment_path(@assignment)
     else
       flash[:warning] = @submission.errors.full_messages.join(', ')
-      redirect_to assignment_path(@assignment)
     end
+    redirect_to assignment_path(@assignment)
   end
 
   def edit
