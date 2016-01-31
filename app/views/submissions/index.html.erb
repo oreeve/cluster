@@ -15,10 +15,10 @@
                 <h3><%= link_to "#{submission.student.first_name} #{submission.student.last_name}", '#' %></h3>
                 <% unless submission.assignment.due_date == nil %>
                   Due date: <%= submission.assignment.due_date.strftime('%B %-d, %Y') %><br>
-                  <% if submission.past_due? %>
-                    <p>Submitted Late<p>
+                  <% if submission.assignment.due_date < submission.created_at %>
+                    <div class="late">Submitted Late</div><br>
                   <% else %>
-                    <p>Submitted Ontime<p>
+                    <div class="ontime">Submitted Ontime</div><br>
                   <% end %>
                 <% end %>
                 <div class="gradecomments">
